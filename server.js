@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const helmet = require('helmet');
 const port = 3000;
+const routes = require('./routes/index');
 
 app.set('view engine', 'ejs');
 
@@ -21,20 +22,6 @@ app.use(helmet({
     },
 }));
 
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
-});
-
-app.get('/about', (req, res) => {
-    res.render('about', { title: 'About Us' });
-});
-
-app.get('/contact', (req, res) => {
-    res.render('contact', { title: 'Contact Us' });
-});
-
-app.get('/services', (req, res) => {
-    res.render('services', { title: 'Our Services' });
-});
+app.use('/', routes);
 
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
