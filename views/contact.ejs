@@ -1,13 +1,31 @@
-<html>
 <head>
-    <title>Contact Us</title>
+    <title>Contact Us</title>\
     <base target="_blank" />
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        function validateForm() {
+            let user_name = document.getElementById('user_name').value;
+            let user_email = document.getElementById('user_email').value;
+            let isValid = true;
+
+            if (user_name.length < 2) {
+                alert('Name must be at least 2 characters long');
+                isValid = false;
+            }
+
+            if (!user_email.includes('@')) {
+                alert('Please enter a valid email address');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+    <script>
         (function () {
             emailjs.init({
                 publicKey: "LyQdzIpqWD7qmfpru",
@@ -15,7 +33,7 @@
         })();
     </script>
 
-    <script type="text/javascript">
+    <script>
         window.onload = function () {
             document.getElementById("contact-form").addEventListener("submit", function (event) {
                 event.preventDefault();
@@ -49,12 +67,12 @@
         friends. Have a blast! We have tons of that.
     </p>
     <hr />
-    <form id="contact-form">
+    <form id="contact-form" onsubmit="return validateForm()">
         <input type="hidden" name="contact_number" value="697483" />
         <label>Name</label>
-        <input type="text" name="user_name" placeholder="Full Name" />
+        <input type="text" id="user_name" name="user_name" placeholder="Full Name" />
         <label>Email</label>
-        <input type="email" name="user_email" placeholder="Email Address" />
+        <input type="email" id="user_email" name="user_email" placeholder="Email Address" />
         <label>Message</label>
         <textarea name="message"></textarea>
         <input type="submit" value="Send" class="btn" />
@@ -77,4 +95,3 @@
 
 <%- include('partials/footer') %>
 </body>
-</html>
