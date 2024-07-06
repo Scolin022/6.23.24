@@ -4,50 +4,7 @@
 <!--    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway" rel="stylesheet" />-->
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 <!--    <link rel="stylesheet" href="/css/styles.css" />-->
-
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        function validateForm() {
-            let user_name = document.getElementById('user_name').value;
-            let user_email = document.getElementById('user_email').value;
-            let isValid = true;
-
-            if (user_name.length < 2) {
-                alert('Name must be at least 2 characters long');
-                isValid = false;
-            }
-
-            if (!user_email.includes('@')) {
-                alert('Please enter a valid email address');
-                isValid = false;
-            }
-
-            return isValid;
-        }
-    </script>
-    <script>
-        (function () {
-            emailjs.init({
-                publicKey: "LyQdzIpqWD7qmfpru",
-            });
-        })();
-    </script>
-
-    <script>
-        window.onload = function () {
-            document.getElementById("contact-form").addEventListener("submit", function (event) {
-                event.preventDefault();
-                emailjs.sendForm("contact_service", "contact_form", this).then(
-                    () => {
-                        console.log("SUCCESS!");
-                    },
-                    (error) => {
-                        console.log("FAILED...", error);
-                    }
-                );
-            });
-        };
-    </script>
 </head>
 
 <body>
