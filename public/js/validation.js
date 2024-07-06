@@ -1,4 +1,5 @@
-function validateForm() {
+function validateForm(event) {
+    event.preventDefault();
     let user_name = document.getElementById('user_name').value;
     let user_email = document.getElementById('user_email').value;
     let isValid = true;
@@ -13,5 +14,11 @@ function validateForm() {
         isValid = false;
     }
 
-    return isValid;
+    if (isValid) {
+        sendEmail();
+    }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("contact-form").addEventListener("submit", validateForm);
+});
