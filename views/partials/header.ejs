@@ -1,0 +1,9 @@
+<header>
+    <h1><%= title %></h1>
+    <nav>
+        <li><a href="/" class="<%= locals.path === '/' ? 'active' : '' %>">Home</a></li>
+        <li><a href="/services" class="<%= locals.path === '/services' ? 'active' : '' %>">Services</a></li>
+        <li><a href="/about" class="<%= locals.path === '/about' ? 'active' : '' %>">About</a></li>
+        <li><a href="/contact" class="<%= locals.path === '/contact' ? 'active' : '' %>">Contact</a></li>
+    </nav>
+</header>
